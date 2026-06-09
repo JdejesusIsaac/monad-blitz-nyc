@@ -19,6 +19,7 @@
   "dependencies": {
     "@open-wallet-standard/adapters": "file:../ows-monad/ows/bindings/node-adapters",
     "@open-wallet-standard/core": "file:../ows-monad/ows/bindings/node",
+    "@tanstack/react-query": "^5.101.0",
     "better-sqlite3": "^11.10.0",
     "drizzle-orm": "^0.44.2",
     "next": "16.2.7",
@@ -26,7 +27,8 @@
     "react-dom": "19.2.4",
     "server-only": "^0.0.1",
     "uuid": "^11.1.0",
-    "viem": "^2.31.0"
+    "viem": "^2.31.0",
+    "wagmi": "^2.19.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

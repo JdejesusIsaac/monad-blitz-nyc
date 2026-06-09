@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: monadBlitzRoot,
   serverExternalPackages: ["better-sqlite3"],
   webpack: (config, { isServer }) => {
+    // Silence React Native dep pulled in by @metamask/sdk (browser build, unused)
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      "@react-native-async-storage/async-storage": false,
+    };
+
     if (isServer) {
       const prev = config.externals;
       config.externals = [

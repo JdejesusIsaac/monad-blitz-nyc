@@ -2,18 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-
-// ─── Wagmi stub ───────────────────────────────────────────────────────────────
-// In Next.js replace these three lines with real wagmi imports:
-// import { useAccount, useConnect, useDisconnect } from "wagmi"
-// import { injected } from "wagmi/connectors"
-// Then swap useWalletStub() calls for useAccount() / useConnect() / useDisconnect()
-function useWalletStub() {
-const [address, setAddress] = useState<string | null>(null);
-const connect = () => setAddress("0xA1b2C3d4E5f6A7b8C9d0E1f2A3b4C5d6E7f8A9b0");
-const disconnect = () => setAddress(null);
-return { address, isConnected: !!address, connect, disconnect };
-}
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { injected } from "wagmi/connectors";
 
 function truncate(addr: string) {
 return addr.slice(0, 6) + "..." + addr.slice(-4);
@@ -186,7 +176,9 @@ Connect Wallet
 // ─── Main component ───────────────────────────────────────────────────────────
 export function LearnerDashboard() {
 const [activeNav, setActiveNav] = useState("Dashboard");
-const { address, isConnected, connect, disconnect } = useWalletStub();
+const { address, isConnected } = useAccount();
+const { connect } = useConnect();
+const { disconnect } = useDisconnect();
 
 return (
 <div className="flex size-full min-h-screen" style={{ fontFamily: "'Inter', sans-serif", background: "#f8f9fb" }}>
@@ -262,9 +254,9 @@ Complete courses. Get verified. Receive USDC.
 </p>
 </div>
 <ConnectWalletButton
-address={address}
+address={address ?? null}
 isConnected={isConnected}
-connect={connect}
+connect={() => connect({ connector: injected() })}
 disconnect={disconnect}
 />
 </header>

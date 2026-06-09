@@ -4,14 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// ─── Wagmi stub ───────────────────────────────────────────────────────────────
-// In Next.js replace with: import { useAccount } from "wagmi"
-function useWalletStub() {
-const [address] = useState<string | null>(
-"0xA1b2C3d4E5f6A7b8C9d0E1f2A3b4C5d6E7f8A9b0"
-);
-return { address, isConnected: !!address };
-}
+import { useAccount } from "wagmi";
 
 function truncate(addr: string) {
 return addr.slice(0, 6) + "..." + addr.slice(-4);
@@ -268,7 +261,7 @@ return { label: "Needs More Practice", emoji: "💪", color: "#9a3412", bg: "#ff
 // ─── Main component ───────────────────────────────────────────────────────────
 export function QuizPage({ onBack: _onBack }: { onBack?: () => void }) {
 const router = useRouter();
-const { address, isConnected } = useWalletStub();
+const { address, isConnected } = useAccount();
 
 const [programId, setProgramId] = useState<string | null>(null);
 const [current, setCurrent] = useState(0);
