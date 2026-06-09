@@ -318,8 +318,12 @@ const pass = pct >= 80;
 const badge = getBadge(pct);
 
 const claimReward = async () => {
-if (!address || !programId) {
-  setClaimError(programId ? null : "Program not loaded. Run npm run seed first.");
+if (!address) {
+  setClaimError("Connect your wallet first to receive the MON reward.");
+  return;
+}
+if (!programId) {
+  setClaimError("Program not loaded. Try refreshing.");
   return;
 }
 setClaiming(true);
@@ -358,35 +362,6 @@ setClaiming(false);
 }
 };
 
-// ── Not connected gate ──────────────────────────────────────────────────────
-if (!isConnected || !address) {
-return (
-<div className="flex size-full min-h-screen items-center justify-center" style={{ fontFamily: "'Inter', sans-serif", background: "#f8f9fb" }}>
-<div className="rounded-2xl bg-white p-10 flex flex-col items-center gap-5 max-w-sm w-full" style={{ border: "1px solid #e5e7eb", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
-<div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: G.bg }}>
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-<rect x="2" y="7" width="20" height="14" rx="3" stroke={G.primary} strokeWidth="1.8" />
-<path d="M16 12a2 2 0 110 4 2 2 0 010-4z" fill={G.primary} />
-<path d="M8 7V6a4 4 0 018 0v1" stroke={G.primary} strokeWidth="1.8" strokeLinecap="round" />
-</svg>
-</div>
-<div className="text-center">
-<div style={{ fontWeight: 800, fontSize: "1.1rem", color: "#111827", marginBottom: "6px" }}>Wallet Required</div>
-<div style={{ fontSize: "0.85rem", color: "#6b7280", lineHeight: 1.6 }}>
-Connect your wallet before starting the quiz so your MON reward can be sent to the right address.
-</div>
-</div>
-<a
-href="/learner"
-className="w-full text-center rounded-xl py-3 transition-all hover:opacity-90"
-style={{ background: G.btnGrad, color: "#fff", fontWeight: 600, fontSize: "0.875rem", textDecoration: "none" }}
->
-Go to Learner Dashboard
-</a>
-</div>
-</div>
-);
-}
 
 // ── Results screen ──────────────────────────────────────────────────────────
 if (submitted) {
@@ -421,6 +396,7 @@ style={{ background: pass ? G.btnGrad : "linear-gradient(135deg, #dc2626, #b91c1
 </div>
 
 {/* Payout address */}
+{address ? (
 <div className="w-full rounded-xl px-4 py-3 flex items-center gap-2" style={{ background: "#f8f9fb", border: "1px solid #e5e7eb" }}>
 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
 <rect x="1" y="4" width="12" height="8" rx="2" stroke="#9ca3af" strokeWidth="1.3" />
@@ -430,6 +406,11 @@ style={{ background: pass ? G.btnGrad : "linear-gradient(135deg, #dc2626, #b91c1
 <span style={{ fontSize: "0.75rem", color: "#6b7280", fontWeight: 500 }}>Payout address: </span>
 <span style={{ fontFamily: "monospace", fontSize: "0.78rem", color: "#374151", fontWeight: 600 }}>{truncate(address)}</span>
 </div>
+) : (
+<div className="w-full rounded-xl px-4 py-3 flex items-center gap-2" style={{ background: "#fff7ed", border: "1px solid #fed7aa" }}>
+<span style={{ fontSize: "0.78rem", color: "#c2410c", fontWeight: 500 }}>Connect your wallet on the dashboard to claim your MON reward.</span>
+</div>
+)}
 
 {/* Q breakdown */}
 <div className="w-full flex flex-col gap-1.5 max-h-52 overflow-y-auto pr-1">
