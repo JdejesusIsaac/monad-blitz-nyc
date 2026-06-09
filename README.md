@@ -1,15 +1,57 @@
-# Monad Blitz NYC Submission Process
+# AllowMe for Institutions
 
-## Steps to prepare your project repo:
+> AI-managed learning treasuries — verified educational outcomes trigger automatic USDC payouts on Monad.
 
-1. Visit the `monad-blitz-nyc` repo (link [here](https://github.com/monad-developers/monad-blitz-nyc)) and fork it.
+Institutions create an OWS policy-gated treasury wallet, define learning reward programs, and let an AI agent automatically pay verified learners in USDC on Monad testnet — no manual approvals, no custodians.
 
-![1.png](/screenshots/1.png)
+**Demo:** NYPL funds treasury → patron completes AI Ethics 101 → OWS agent signs payout → Monad settles in < 1 second.
 
-2. Give it your project name, a one-liner description, make sure you are forking `main` branch and click `Create Fork`
+## Team
 
-![2.png](https://github.com/monad-developers/monad-blitz-denver/raw/main/screenshots/2.png?raw=true)
+| Name | Role | GitHub |
+|---|---|---|
+| Juan Isaac | Treasury & Infrastructure | [@JdejesusIsaac](https://github.com/JdejesusIsaac) |
+| Shageenth | Full-Stack | [@shageenthsandrakumar](https://github.com/shageenthsandrakumar) |
+| Wolfie | Frontend & Demo | [@Wolfie92](https://github.com/Wolfie92) |
 
-3. In your fork you can make all the changes you want, add code of your project, create branches, add information to `README.md` , you can change anything and everything.
+## Stack
 
-4. For next steps head to [Blitz Portal](https://blitz.devnads.com)
+- **Wallet:** OWS (Open Wallet Standard) — policy-gated local treasury
+- **Chain:** Monad Testnet (chain 10143, ~0.4s finality)
+- **Settlement:** USDC `0x534b2f3A21130d7a60830c2Df862319e593943A3`
+- **Frontend:** Next.js 16 + TypeScript + Tailwind
+- **DB:** SQLite + Drizzle ORM
+- **Explorer:** [testnet.monadvision.com](https://testnet.monadvision.com)
+
+## Run
+
+```bash
+cd allowme
+npm install
+npm run seed          # seeds NYPL institution + AI Ethics program
+```
+
+First-time treasury setup (on the demo machine):
+```bash
+curl -X POST http://localhost:3000/api/treasury/setup
+# fund the returned address with MON + USDC from the Monad testnet faucet
+npm run dev -- --webpack
+```
+
+## Key API Routes
+
+| Method | Route | Description |
+|---|---|---|
+| GET | `/api/treasury` | Treasury address, balance, recent payouts |
+| GET | `/api/programs` | List programs |
+| POST | `/api/verify` | Submit quiz answers → grade → verify → payout |
+| POST | `/api/rewards/execute` | Direct reward execution |
+| GET | `/api/dashboard/institution` | Institution dashboard data |
+| GET | `/api/dashboard/learner?wallet=0x…` | Learner earnings + completions |
+
+## Monad Testnet
+
+- RPC: `https://testnet-rpc.monad.xyz`
+- Chain ID: `10143`
+- Faucet (MON): [faucet.monad.xyz](https://faucet.monad.xyz)
+- Faucet (USDC): [faucet.circle.com](https://faucet.circle.com)

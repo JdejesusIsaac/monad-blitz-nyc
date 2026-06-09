@@ -14,13 +14,31 @@ import {
 
 runMigrations();
 
-/** Mock AI Ethics 101 quiz — 5 questions, 80+ to pass. */
+/**
+ * AI Best Practices Quiz — 17 questions, 80+ to pass.
+ * Sections: Basic AI Understanding (1-4), Safe AI Behavior (5-8),
+ *           Prompting Skills (9-11), Critical Thinking (12-14),
+ *           Scenario Questions (15-17).
+ * Q11 rephrased as single-select: D = "All of the above" (index 3).
+ */
 const AI_ETHICS_QUESTIONS: QuizQuestion[] = [
-  { id: "q1", correctIndex: 1 },
-  { id: "q2", correctIndex: 0 },
-  { id: "q3", correctIndex: 2 },
-  { id: "q4", correctIndex: 1 },
-  { id: "q5", correctIndex: 0 },
+  { id: "q1",  correctIndex: 1 }, // B — help you learn, brainstorm, work faster
+  { id: "q2",  correctIndex: 1 }, // B — verify important information
+  { id: "q3",  correctIndex: 2 }, // C — check reliable sources, ask follow-ups
+  { id: "q4",  correctIndex: 1 }, // B — predicts and generates information
+  { id: "q5",  correctIndex: 2 }, // C — No
+  { id: "q6",  correctIndex: 2 }, // C — personal passwords or private family details
+  { id: "q7",  correctIndex: 1 }, // B — fact-check and understand it first
+  { id: "q8",  correctIndex: 2 }, // C — correct it and ask better questions
+  { id: "q9",  correctIndex: 2 }, // C — "Give me 5 creative science project ideas..."
+  { id: "q10", correctIndex: 1 }, // B — help AI give more useful answers
+  { id: "q11", correctIndex: 3 }, // D — All of the above (clear goal + context + details + format)
+  { id: "q12", correctIndex: 1 }, // B — ask questions and verify
+  { id: "q13", correctIndex: 1 }, // B — think smarter and faster
+  { id: "q14", correctIndex: 1 }, // B — asking for help understanding math
+  { id: "q15", correctIndex: 1 }, // B — ask AI to explain and fact-check
+  { id: "q16", correctIndex: 2 }, // C — check trusted sources or professionals
+  { id: "q17", correctIndex: 1 }, // B — "No technology is perfect — it should still be checked."
 ];
 
 type VerifyBody = {
