@@ -18,12 +18,6 @@ services:
         value: https://testnet.monadvision.com
       - key: ALLOWME_VERIFY_URL
         value: https://agents.devnads.com/v1/verify
-      # ── OWS treasury wallet (set these in the Render dashboard) ──────────
-      - key: OWS_WALLET_NAME
-        sync: false
-      - key: OWS_TREASURY_ADDRESS
-        sync: false
-      - key: OWS_PAYOUT_KEY
-        sync: false
-      - key: OWS_PASSPHRASE
-        sync: false
+      # ── OWS (no secrets needed — setup creates wallet + token at runtime) ─
+      # OWS_VAULT_PATH defaults to ~/.ows  (override here if needed)
+      # OWS_TREASURY_WALLET defaults to nypl-treasury (override here if needed)
