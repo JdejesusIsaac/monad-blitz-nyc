@@ -1,14 +1,15 @@
 import Database from "better-sqlite3";
 import { drizzle, type BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import { migrate } from "drizzle-orm/better-sqlite3/migrator";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join } from "node:path";
 
 import * as schema from "./schema";
 
 type Db = BetterSQLite3Database<typeof schema>;
 
-const appRoot = join(dirname(fileURLToPath(import.meta.url)), "../..");
+// process.cwd() is always the project root (allowme/) whether dev, build, or prod.
+// import.meta.url breaks when webpack bundles lib/db into server route chunks.
+const appRoot = process.cwd();
 const defaultDbPath = join(appRoot, "allowme.db");
 const migrationsFolder = join(appRoot, "drizzle");
 
@@ -47,6 +48,9 @@ export const db = new Proxy({} as Db, {
 
 export function runMigrations(): void {
   if (migrated) return;
+  // During `next build`, Next.js executes route modules for static analysis.
+  // Skip migration then — it runs for real when the server starts (next start).
+  if (process.env.NEXT_PHASE === "phase-production-build") return;
   migrate(getDb(), { migrationsFolder });
   migrated = true;
 }

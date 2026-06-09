@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: allowme-monad
+    runtime: node
+    rootDir: allowme
+    buildCommand: npm install && npm run build
+    startCommand: npm run seed && npm start
+    nodeVersion: 20.x
+    envVars:
+      # ── Public Monad config (safe to commit) ──────────────────────────────
+      - key: NEXT_PUBLIC_MONAD_RPC
+        value: https://testnet-rpc.monad.xyz
+      - key: NEXT_PUBLIC_MONAD_CHAIN_ID
+        value: "10143"
+      - key: NEXT_PUBLIC_USDC_ADDRESS
+        value: 0x534b2f3A21130d7a60830c2Df862319e593943A3
+      - key: MONAD_EXPLORER_BASE
+        value: https://testnet.monadvision.com
+      - key: ALLOWME_VERIFY_URL
+        value: https://agents.devnads.com/v1/verify
+      # ── OWS treasury wallet (set these in the Render dashboard) ──────────
+      - key: OWS_WALLET_NAME
+        sync: false
+      - key: OWS_TREASURY_ADDRESS
+        sync: false
+      - key: OWS_PAYOUT_KEY
+        sync: false
+      - key: OWS_PASSPHRASE
+        sync: false
