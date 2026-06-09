@@ -375,7 +375,7 @@ style={{ background: "#f0fdf4", color: "#16a34a", fontSize: "0.78rem", fontWeigh
 >
 {course.reward} on completion
 </span>
-<a
+<Link
 href="/learner/quiz"
 className="inline-flex items-center gap-1.5 rounded-lg px-4 py-2 transition-all hover:scale-[1.03]"
 style={{
@@ -391,7 +391,7 @@ Start Quiz
 <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
 <path d="M2.5 6.5h8M7 3l3.5 3.5L7 10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
 </svg>
-</a>
+</Link>
 </div>
 </div>
 ))}
