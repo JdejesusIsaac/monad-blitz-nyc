@@ -10,7 +10,6 @@ import { owsToViemAccount } from "../ows/viem-account";
 
 import { monadTestnet } from "./chain";
 import { MONAD_TESTNET } from "./config";
-import { erc20Abi } from "./usdc";
 import { getOwsAgentKey, getOwsTreasuryWallet, getOwsVaultPath } from "../ows/config";
 
 export function getPublicClient() {
@@ -20,17 +19,17 @@ export function getPublicClient() {
   });
 }
 
-export async function getUsdcBalance(address: Address): Promise<bigint> {
+export async function getNativeBalance(address: Address): Promise<bigint> {
   const client = getPublicClient();
-  return client.readContract({
-    address: MONAD_TESTNET.usdc,
-    abi: erc20Abi,
-    functionName: "balanceOf",
-    args: [address],
-  });
+  return client.getBalance({ address });
 }
 
-export async function sendUsdcTransfer(
+/** @deprecated Use getNativeBalance — demo pays native MON, not USDC. */
+export async function getUsdcBalance(address: Address): Promise<bigint> {
+  return getNativeBalance(address);
+}
+
+export async function sendMonTransfer(
   to: Address,
   amount: bigint
 ): Promise<{ txHash: Hex }> {
@@ -46,15 +45,21 @@ export async function sendUsdcTransfer(
     transport: http(MONAD_TESTNET.rpcUrl),
   });
 
-  const hash = await walletClient.writeContract({
+  const hash = await walletClient.sendTransaction({
     account,
-    address: MONAD_TESTNET.usdc,
-    abi: erc20Abi,
-    functionName: "transfer",
-    args: [to, amount],
+    to,
+    value: amount,
   });
 
   return { txHash: hash };
+}
+
+/** @deprecated Use sendMonTransfer — demo pays native MON, not USDC. */
+export async function sendUsdcTransfer(
+  to: Address,
+  amount: bigint
+): Promise<{ txHash: Hex }> {
+  return sendMonTransfer(to, amount);
 }
 
 export async function withRpcRetry<T>(

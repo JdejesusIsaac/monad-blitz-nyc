@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 
 import { db, runMigrations } from "../lib/db";
 import { institutions, programs } from "../lib/db/schema";
-import { DEFAULT_REWARD_USDC } from "../lib/monad/config";
+import { DEFAULT_DAILY_CAP_MON, DEFAULT_REWARD_MON } from "../lib/monad/config";
 
 async function seed() {
   runMigrations();
@@ -31,13 +31,13 @@ async function seed() {
       id: programId,
       institutionId,
       name: "NYPL AI Ethics Program",
-      rewardAmountUsdc: DEFAULT_REWARD_USDC.toString(),
-      dailyCapUsdc: "100000000",
+      rewardAmountUsdc: DEFAULT_REWARD_MON.toString(),
+      dailyCapUsdc: DEFAULT_DAILY_CAP_MON.toString(),
       courseSlug: "ai-ethics-101",
       createdAt: new Date().toISOString(),
     });
     console.log("Created program:", programId);
-    console.log("NYPL AI Ethics Program — $1 USDC reward");
+    console.log("NYPL AI Ethics Program — 0.01 MON reward");
   } else {
     console.log("Program already seeded:", programRows[0].id);
   }

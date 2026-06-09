@@ -27,6 +27,7 @@ export async function GET() {
 
     return NextResponse.json({
       address,
+      balanceMon: balance.toString(),
       balanceUsdc: balance.toString(),
       rewardsSent: payoutCount?.count ?? 0,
       recentPayouts,

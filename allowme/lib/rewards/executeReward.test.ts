@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { db } from "@/lib/db";
 import { payouts, programs } from "@/lib/db/schema";
 import { executeReward } from "@/lib/rewards/executeReward";
+import { DEFAULT_DAILY_CAP_MON, DEFAULT_REWARD_MON } from "@/lib/monad/config";
 import { resetTestDb, seedTestInstitution } from "@/lib/test/db";
 import { TEST_LEARNER_WALLET } from "@/lib/test/fixtures";
 
@@ -28,8 +29,8 @@ describe("executeReward", () => {
       id: programId,
       institutionId: "nypl",
       name: "AI Ethics",
-      rewardAmountUsdc: "1000000",
-      dailyCapUsdc: "100000000",
+      rewardAmountUsdc: DEFAULT_REWARD_MON.toString(),
+      dailyCapUsdc: DEFAULT_DAILY_CAP_MON.toString(),
       courseSlug: "ai-ethics-101",
       createdAt: new Date().toISOString(),
     });
@@ -43,7 +44,7 @@ describe("executeReward", () => {
       programId,
       learnerId: "learner-1",
       learnerWallet: TEST_LEARNER_WALLET,
-      amountUsdc: "1000000",
+      amountUsdc: DEFAULT_REWARD_MON.toString(),
       txHash: "0xexisting",
       status: "confirmed",
       createdAt: new Date().toISOString(),
@@ -65,7 +66,7 @@ describe("executeReward", () => {
   });
 
   it("signs and persists payout on approval", async () => {
-    mockedBalance.mockResolvedValue(10_000_000n);
+    mockedBalance.mockResolvedValue(10_000_000_000_000_000n);
     mockedSign.mockResolvedValue({ txHash: "0xnewtx" });
 
     const result = await executeReward({
@@ -84,7 +85,7 @@ describe("executeReward", () => {
   });
 
   it("rejects invalid learner wallet", async () => {
-    mockedBalance.mockResolvedValue(10_000_000n);
+    mockedBalance.mockResolvedValue(10_000_000_000_000_000n);
 
     const result = await executeReward({
       programId,

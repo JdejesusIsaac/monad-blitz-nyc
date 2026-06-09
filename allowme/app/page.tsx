@@ -70,7 +70,7 @@ className="mt-6 max-w-md text-white/55"
 style={{ fontSize: 18, lineHeight: 1.65, fontWeight: 500 }}
 >
 Create a treasury. Define rewards. Let verified learning trigger
-automatic USDC payouts on Monad.
+automatic MON payouts on Monad.
 </p>
 
 <Link
@@ -86,7 +86,7 @@ Launch Institution Dashboard
 {[
 ["$0 fees", "On-chain payouts"],
 ["~1s", "Monad finality"],
-["USDC", "Stablecoin rewards"],
+["MON", "Native rewards"],
 ].map(([value, label]) => (
 <div key={value}>
 <div style={{ color: "#4ade80", fontWeight: 700 }}>
@@ -136,7 +136,7 @@ Learn
 className="mt-6 max-w-md text-[#52525b]"
 style={{ fontSize: 18, lineHeight: 1.65, fontWeight: 500 }}
 >
-Complete courses. Get verified. Receive USDC instantly on Monad.
+Complete courses. Get verified. Receive MON instantly on Monad.
 </p>
 
 <Link
@@ -151,7 +151,7 @@ Start Learning
 <div className="mt-14 flex flex-wrap gap-3 border-t border-zinc-200 pt-6">
 {[
 "✓ On-chain verification",
-"✓ Instant USDC payouts",
+"✓ Instant MON payouts",
 "✓ No wallet friction",
 ].map((chip) => (
 <span

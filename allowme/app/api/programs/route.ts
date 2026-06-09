@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm";
 
 import { runMigrations, db } from "@/lib/db";
 import { programs } from "@/lib/db/schema";
-import { DEFAULT_REWARD_USDC } from "@/lib/monad/config";
+import { DEFAULT_DAILY_CAP_MON, DEFAULT_REWARD_MON } from "@/lib/monad/config";
 
 runMigrations();
 
@@ -40,8 +40,8 @@ export async function POST(request: Request) {
         institutionId: body.institutionId,
         name: body.name,
         rewardAmountUsdc:
-          body.rewardAmountUsdc ?? DEFAULT_REWARD_USDC.toString(),
-        dailyCapUsdc: body.dailyCapUsdc ?? "100000000",
+          body.rewardAmountUsdc ?? DEFAULT_REWARD_MON.toString(),
+        dailyCapUsdc: body.dailyCapUsdc ?? DEFAULT_DAILY_CAP_MON.toString(),
         courseSlug: body.courseSlug ?? "ai-ethics-101",
         createdAt: now,
       })

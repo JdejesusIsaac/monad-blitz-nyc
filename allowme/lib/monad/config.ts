@@ -16,7 +16,20 @@ export function txExplorerUrl(hash: string): string {
   return `${MONAD_TESTNET.explorerBase}/tx/${normalized}`;
 }
 
-export const USDC_DECIMALS = 6;
+export const MON_DECIMALS = 18;
 
-/** $1 USDC in base units (6 decimals). */
-export const DEFAULT_REWARD_USDC = 1_000_000n;
+/** 0.01 MON in wei — default learner reward for demo. */
+export const DEFAULT_REWARD_MON = 10_000_000_000_000_000n;
+
+/** 1 MON in wei — default daily payout cap. */
+export const DEFAULT_DAILY_CAP_MON = 1_000_000_000_000_000_000n;
+
+/** @deprecated DB column name; stores MON wei amounts. */
+export const DEFAULT_REWARD_USDC = DEFAULT_REWARD_MON;
+
+export function formatMon(wei: bigint): string {
+  const asNumber = Number(wei) / 10 ** MON_DECIMALS;
+  const formatted =
+    asNumber >= 1 ? asNumber.toFixed(2) : asNumber.toFixed(4);
+  return `${formatted} MON`;
+}
