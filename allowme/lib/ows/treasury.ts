@@ -9,7 +9,7 @@ import type { Address } from "viem";
 
 import { db } from "../db";
 import { treasury as treasuryTable } from "../db/schema";
-import { getUsdcBalance } from "../monad/client";
+import { getNativeBalance } from "../monad/client";
 import { MONAD_TESTNET } from "../monad/config";
 import {
   createWallet,
@@ -184,15 +184,15 @@ export async function getTreasuryAddress(): Promise<Address | null> {
 export async function getTreasuryBalance(): Promise<bigint> {
   const address = await getTreasuryAddress();
   if (!address) return 0n;
-  return getUsdcBalance(address);
+  return getNativeBalance(address);
 }
 
 export async function signAndSendReward(
   to: Address,
   amount: bigint
 ): Promise<{ txHash: string }> {
-  const { sendUsdcTransfer, withRpcRetry } = await import("../monad/client");
-  const { txHash } = await withRpcRetry(() => sendUsdcTransfer(to, amount));
+  const { sendMonTransfer, withRpcRetry } = await import("../monad/client");
+  const { txHash } = await withRpcRetry(() => sendMonTransfer(to, amount));
   return { txHash };
 }
 

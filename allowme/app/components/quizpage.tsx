@@ -352,7 +352,7 @@ if (!res.ok || !data.reward?.ok) {
 const params = new URLSearchParams({
   score: String(pct),
   tx: data.reward.txHash ?? "",
-  amount: data.reward.amount ?? "1000000",
+  amount: data.reward.amount ?? "10000000000000000",
 });
 if (data.reward.explorerLink) {
   params.set("explorer", data.reward.explorerLink);
@@ -380,7 +380,7 @@ return (
 <div className="text-center">
 <div style={{ fontWeight: 800, fontSize: "1.1rem", color: "#111827", marginBottom: "6px" }}>Wallet Required</div>
 <div style={{ fontSize: "0.85rem", color: "#6b7280", lineHeight: 1.6 }}>
-Connect your wallet before starting the quiz so your USDC reward can be sent to the right address.
+Connect your wallet before starting the quiz so your MON reward can be sent to the right address.
 </div>
 </div>
 <a
@@ -422,7 +422,7 @@ style={{ background: pass ? G.btnGrad : "linear-gradient(135deg, #dc2626, #b91c1
 </div>
 <div style={{ fontSize: "0.85rem", color: "#6b7280", marginTop: "6px", lineHeight: 1.6 }}>
 {pass
-? `You scored ${score} out of ${QUESTIONS.length}. Claim your $1 USDC reward below.`
+? `You scored ${score} out of ${QUESTIONS.length}. Claim your 0.01 MON reward below.`
 : `You scored ${score} out of ${QUESTIONS.length}. You need 80% or above to claim the reward.`}
 </div>
 </div>
@@ -482,7 +482,7 @@ cursor: claiming || !programId ? "wait" : "pointer",
 boxShadow: `0 4px 16px ${G.shadow}`,
 }}
 >
-{claiming ? "Submitting…" : "Claim $1 USDC Reward"}
+{claiming ? "Submitting…" : "Claim 0.01 MON Reward"}
 </button>
 {!programId && (
 <div style={{ fontSize: "0.75rem", color: "#9ca3af", textAlign: "center" }}>

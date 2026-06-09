@@ -1,6 +1,6 @@
 # AllowMe for Institutions
 
-AI-managed learning treasuries powered by the **local OWS fork** (`../ows-monad/ows`) and Monad testnet USDC settlement.
+AI-managed learning treasuries powered by the **local OWS fork** (`../ows-monad/ows`) and Monad testnet MON settlement.
 
 > **OWS is only consumed from the local fork** at [`../ows-monad/ows`](../ows-monad/ows) — not from the npm registry. `postinstall` copies the loader into that fork and installs the platform native binary.
 
@@ -48,15 +48,15 @@ npm run start
 curl -X POST http://localhost:3000/api/treasury/setup
 ```
 
-Fund the treasury wallet with MON ([faucet](https://faucet.monad.xyz)) and testnet USDC before running rewards.
+Fund the treasury wallet with MON from the [faucet](https://faucet.monad.xyz) before running rewards.
 
 ## API (infrastructure)
 
 | Method | Path | Description |
 |--------|------|-------------|
-| `GET` | `/api/treasury` | Treasury address, USDC balance, payout history |
+| `GET` | `/api/treasury` | Treasury address, MON balance, payout history |
 | `POST` | `/api/treasury/setup` | Create OWS wallet + policy + vault token file |
-| `POST` | `/api/rewards/execute` | Policy check → OWS sign → Monad USDC transfer |
+| `POST` | `/api/rewards/execute` | Policy check → OWS sign → Monad MON transfer |
 | `POST` | `/api/verify` | Grade quiz → verify → execute reward |
 | `GET/POST` | `/api/programs` | Program CRUD |
 
@@ -64,9 +64,9 @@ Fund the treasury wallet with MON ([faucet](https://faucet.monad.xyz)) and testn
 
 1. `POST /api/treasury/setup` — provisions wallet, policy, and `$OWS_VAULT_PATH/reward-agent.token`
 2. Fund treasury on Monad testnet
-3. `npm run seed` — NYPL AI Ethics Program ($1 USDC)
+3. `npm run seed` — NYPL AI Ethics Program (0.01 MON)
 4. Learner passes quiz → `POST /api/verify` with `score: 92`
-5. OWS agent signs USDC transfer on `eip155:10143`
+5. OWS agent signs native MON transfer on `eip155:10143`
 6. View tx on [testnet.monadvision.com](https://testnet.monadvision.com)
 
 ## Tests

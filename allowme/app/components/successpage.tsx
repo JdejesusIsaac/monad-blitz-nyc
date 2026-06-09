@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
+import { formatMon } from "@/lib/monad/config";
+
 const G = {
   primary: "#16a34a",
   dark: "#15803d",
@@ -31,7 +33,7 @@ export function SuccessPage() {
   const amount = searchParams.get("amount") ?? "1000000";
   const amountDisplay =
     searchParams.get("amountDisplay") ??
-    `$${(Number(amount) / 1_000_000).toFixed(2)} USDC`;
+    formatMon(BigInt(amount));
 
   const badge = getBadge(score);
 

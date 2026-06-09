@@ -27,7 +27,7 @@ title: "AI Ethics 101",
 description: "Explore the foundations of responsible AI — bias, fairness, transparency, and societal impact.",
 sections: 5,
 questions: 17,
-reward: "$1 USDC",
+reward: "0.01 MON",
 difficulty: "Beginner",
 duration: "~25 min",
 },
@@ -39,7 +39,7 @@ id: "web3-basics",
 title: "Web3 Fundamentals",
 sections: 4,
 questions: 12,
-reward: "$1 USDC",
+reward: "0.01 MON",
 score: 94,
 hash: "0xabc123def456789abc123def456789ab",
 hashShort: "0xabc1...9ab",
@@ -50,7 +50,7 @@ id: "crypto-intro",
 title: "Intro to Cryptography",
 sections: 3,
 questions: 10,
-reward: "$1 USDC",
+reward: "0.01 MON",
 score: 88,
 hash: "0xfed987cba654321fed987cba654321fe",
 hashShort: "0xfed9...1fe",
@@ -59,8 +59,8 @@ completedAt: "2025-06-06",
 ];
 
 const PAYOUTS = [
-{ course: "Web3 Fundamentals", amount: "$1 USDC", hash: "0xabc123def456789abc123def456789ab", hashShort: "0xabc1...9ab", date: "2025-06-08" },
-{ course: "Intro to Cryptography", amount: "$1 USDC", hash: "0xfed987cba654321fed987cba654321fe", hashShort: "0xfed9...1fe", date: "2025-06-06" },
+{ course: "Web3 Fundamentals", amount: "0.01 MON", hash: "0xabc123def456789abc123def456789ab", hashShort: "0xabc1...9ab", date: "2025-06-08" },
+{ course: "Intro to Cryptography", amount: "0.01 MON", hash: "0xfed987cba654321fed987cba654321fe", hashShort: "0xfed9...1fe", date: "2025-06-06" },
 ];
 
 const NAV_ITEMS = [
@@ -258,7 +258,7 @@ Wallet connected ✓
 Learner Dashboard
 </h1>
 <p style={{ fontSize: "0.78rem", color: "#9ca3af", fontWeight: 400, marginTop: "1px" }}>
-Complete courses. Get verified. Receive USDC.
+Complete courses. Get verified. Receive MON.
 </p>
 </div>
 <ConnectWalletButton
@@ -282,7 +282,7 @@ style={{ background: "#f0fdf4", border: "1px solid #bbf7d0" }}
 <path d="M5 7.5l2 2 3-3" stroke="#16a34a" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
 </svg>
 <span style={{ fontSize: "0.8rem", color: "#15803d", fontWeight: 500 }}>
-USDC payouts will be sent to{" "}
+MON payouts will be sent to{" "}
 <span style={{ fontFamily: "monospace", fontWeight: 700 }}>{truncate(address)}</span>
 </span>
 </div>
@@ -302,7 +302,7 @@ TOTAL EARNED
 <div style={{ fontWeight: 800, fontSize: "2rem", letterSpacing: "-0.03em", lineHeight: 1 }}>
 2.00
 </div>
-<div style={{ fontSize: "0.8rem", fontWeight: 600, opacity: 0.75, marginTop: "2px" }}>USDC</div>
+<div style={{ fontSize: "0.8rem", fontWeight: 600, opacity: 0.75, marginTop: "2px" }}>MON</div>
 </div>
 <div style={{ fontSize: "0.72rem", opacity: 0.6, fontWeight: 500 }}>2 courses completed</div>
 </div>
