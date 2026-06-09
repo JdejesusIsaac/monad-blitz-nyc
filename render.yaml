@@ -2,9 +2,8 @@ services:
   - type: web
     name: allowme-monad
     runtime: node
-    rootDir: allowme
-    buildCommand: npm install && npm run build
-    startCommand: npm run seed && npm start
+    buildCommand: cd allowme && npm install && npm run build
+    startCommand: cd allowme && npm run seed && npm start
     nodeVersion: 20.x
     envVars:
       # ── Public Monad config (safe to commit) ──────────────────────────────
