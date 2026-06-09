@@ -503,10 +503,12 @@ return (
 </div>
 
 <div className="flex items-center gap-3">
+{address && (
 <div className="flex items-center gap-1.5 rounded-lg px-3 py-1.5" style={{ background: "#f3f4f6", border: "1px solid #e5e7eb" }}>
 <span className="w-1.5 h-1.5 rounded-full" style={{ background: G.light, boxShadow: `0 0 4px ${G.shadow}` }} />
 <span style={{ fontFamily: "monospace", fontSize: "0.75rem", color: "#374151", fontWeight: 500 }}>{truncate(address)}</span>
 </div>
+)}
 <span style={{ fontSize: "0.82rem", color: "#9ca3af", fontWeight: 500 }}>
 Question {current + 1} of {QUESTIONS.length}
 </span>
