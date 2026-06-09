@@ -15,30 +15,30 @@ import {
 runMigrations();
 
 /**
- * AI Best Practices Quiz — 17 questions, 80+ to pass.
- * Sections: Basic AI Understanding (1-4), Safe AI Behavior (5-8),
- *           Prompting Skills (9-11), Critical Thinking (12-14),
- *           Scenario Questions (15-17).
- * Q11 rephrased as single-select: D = "All of the above" (index 3).
+ * AI Ethics 101 — 17 questions, 80+ to pass.
+ * Matches quizpage.tsx exactly. Q11 is multi-select (all 4 correct);
+ * the quiz page sends score directly so correctIndex is for direct-API callers.
+ * Sections: AI Ethics Foundations (1-3), Bias & Fairness (4-7),
+ *           Transparency (8-10), Privacy (11-13), Societal Impact (14-17).
  */
 const AI_ETHICS_QUESTIONS: QuizQuestion[] = [
-  { id: "q1",  correctIndex: 1 }, // B — help you learn, brainstorm, work faster
-  { id: "q2",  correctIndex: 1 }, // B — verify important information
-  { id: "q3",  correctIndex: 2 }, // C — check reliable sources, ask follow-ups
-  { id: "q4",  correctIndex: 1 }, // B — predicts and generates information
-  { id: "q5",  correctIndex: 2 }, // C — No
-  { id: "q6",  correctIndex: 2 }, // C — personal passwords or private family details
-  { id: "q7",  correctIndex: 1 }, // B — fact-check and understand it first
-  { id: "q8",  correctIndex: 2 }, // C — correct it and ask better questions
-  { id: "q9",  correctIndex: 2 }, // C — "Give me 5 creative science project ideas..."
-  { id: "q10", correctIndex: 1 }, // B — help AI give more useful answers
-  { id: "q11", correctIndex: 3 }, // D — All of the above (clear goal + context + details + format)
-  { id: "q12", correctIndex: 1 }, // B — ask questions and verify
-  { id: "q13", correctIndex: 1 }, // B — think smarter and faster
-  { id: "q14", correctIndex: 1 }, // B — asking for help understanding math
-  { id: "q15", correctIndex: 1 }, // B — ask AI to explain and fact-check
-  { id: "q16", correctIndex: 2 }, // C — check trusted sources or professionals
-  { id: "q17", correctIndex: 1 }, // B — "No technology is perfect — it should still be checked."
+  { id: "q1",  correctIndex: 1 }, // B — moral questions around design, deployment, impact
+  { id: "q2",  correctIndex: 1 }, // B — AI pursues goals reflecting human values
+  { id: "q3",  correctIndex: 1 }, // B — decisions can be reviewed, corrected, held accountable
+  { id: "q4",  correctIndex: 2 }, // C — biased or unrepresentative training data
+  { id: "q5",  correctIndex: 1 }, // B — systematic bias causing disparate impact
+  { id: "q6",  correctIndex: 2 }, // C — equalised odds
+  { id: "q7",  correctIndex: 2 }, // C — audit model outputs across subgroups
+  { id: "q8",  correctIndex: 1 }, // B — internal decision process not interpretable
+  { id: "q9",  correctIndex: 3 }, // D — explaining individual predictions
+  { id: "q10", correctIndex: 1 }, // B — right of individuals to receive explanation
+  { id: "q11", correctIndex: 0 }, // multi-select: all 4 correct; 0 used as fallback for direct callers
+  { id: "q12", correctIndex: 1 }, // B — collecting only strictly necessary data
+  { id: "q13", correctIndex: 1 }, // B — training locally, sharing only model updates
+  { id: "q14", correctIndex: 1 }, // B — recruitment, credit scoring, law enforcement
+  { id: "q15", correctIndex: 1 }, // B — spread misinformation, erode trust
+  { id: "q16", correctIndex: 2 }, // C — accountability, transparency, fairness, risk assessment
+  { id: "q17", correctIndex: 2 }, // C — ensure AI benefits society while managing risks
 ];
 
 type VerifyBody = {

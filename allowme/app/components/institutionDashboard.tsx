@@ -405,7 +405,7 @@ style={{ background: "#f0fdf4", color: "#16a34a", fontSize: "0.75rem", fontWeigh
 </td>
 <td className="px-6 py-4">
 <a
-href={`https://testnet.monadexplorer.com/tx/${row.hash}`}
+href={`https://testnet.monadvision.com/tx/${row.hash}`}
 target="_blank"
 rel="noopener noreferrer"
 className="inline-flex items-center gap-1 transition-opacity hover:opacity-60"

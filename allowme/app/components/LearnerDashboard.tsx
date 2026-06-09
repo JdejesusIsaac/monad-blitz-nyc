@@ -445,7 +445,7 @@ style={{ borderTop: "1px solid #f3f4f6" }}
 >
 <span style={{ fontSize: "0.73rem", color: "#9ca3af" }}>Completed {course.completedAt}</span>
 <a
-href={`https://testnet.monadexplorer.com/tx/${course.hash}`}
+href={`https://testnet.monadvision.com/tx/${course.hash}`}
 target="_blank"
 rel="noopener noreferrer"
 className="inline-flex items-center gap-1 transition-opacity hover:opacity-60"
@@ -456,6 +456,62 @@ style={{ fontFamily: "monospace", fontSize: "0.75rem", color: "#4f46e5", fontWei
 <path d="M2 9L9 2M9 2H5M9 2v4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
 </svg>
 </a>
+</div>
+</div>
+))}
+</div>
+</div>
+
+{/* ── Coming Soon modules ───────────────────────────────────── */}
+<div className="flex flex-col gap-4">
+<div className="flex items-center justify-between">
+<div>
+<div style={{ fontWeight: 700, fontSize: "0.9rem", color: "#111827" }}>Upcoming Modules</div>
+<div style={{ fontSize: "0.75rem", color: "#9ca3af", marginTop: "2px" }}>New courses dropping weekly — stay tuned</div>
+</div>
+<button
+className="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 transition-all hover:scale-[1.02]"
+style={{
+background: "linear-gradient(135deg, #4f46e5, #7c3aed)",
+color: "#fff",
+fontWeight: 600,
+fontSize: "0.8rem",
+border: "none",
+cursor: "pointer",
+boxShadow: "0 2px 10px rgba(79,70,229,0.3)",
+}}
+>
+<svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+<path d="M6.5 1v11M1 6.5h11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+</svg>
+Build Custom Module
+</button>
+</div>
+<div className="grid grid-cols-4 gap-4">
+{[
+{ week: "Week 1", title: "Explorer", icon: "🔭", desc: "Navigate the AI landscape and discover how models learn from data." },
+{ week: "Week 2", title: "Creativity", icon: "🎨", desc: "Use AI as a creative partner — art, writing, music, and design." },
+{ week: "Week 3", title: "Future Leader Skills", icon: "🚀", desc: "Lead AI-powered teams and make ethical technology decisions." },
+{ week: "Week 4", title: "Builder", icon: "🛠️", desc: "Build your first AI-powered tool with no prior coding required." },
+].map((module) => (
+<div
+key={module.week}
+className="rounded-2xl p-5 flex flex-col gap-3 relative overflow-hidden"
+style={{ background: "#fff", border: "1px solid #e5e7eb", opacity: 0.85 }}
+>
+<div className="absolute top-3 right-3 rounded-full px-2.5 py-0.5" style={{ background: "#f3f4f6", color: "#9ca3af", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.06em" }}>
+COMING SOON
+</div>
+<div style={{ fontSize: "1.6rem", lineHeight: 1 }}>{module.icon}</div>
+<div>
+<div style={{ fontSize: "0.68rem", fontWeight: 600, color: "#9ca3af", letterSpacing: "0.07em", marginBottom: "3px" }}>
+{module.week.toUpperCase()}
+</div>
+<div style={{ fontWeight: 700, fontSize: "0.9rem", color: "#374151" }}>{module.title}</div>
+</div>
+<div style={{ fontSize: "0.75rem", color: "#9ca3af", lineHeight: 1.55 }}>{module.desc}</div>
+<div className="mt-auto rounded-lg py-2 text-center" style={{ background: "#f9fafb", color: "#d1d5db", fontSize: "0.78rem", fontWeight: 600, border: "1px solid #f3f4f6" }}>
+Notify Me
 </div>
 </div>
 ))}
@@ -505,7 +561,7 @@ style={{ background: "#f0fdf4", color: "#16a34a", fontSize: "0.75rem", fontWeigh
 </td>
 <td className="px-6 py-4">
 <a
-href={`https://testnet.monadexplorer.com/tx/${row.hash}`}
+href={`https://testnet.monadvision.com/tx/${row.hash}`}
 target="_blank"
 rel="noopener noreferrer"
 className="inline-flex items-center gap-1 transition-opacity hover:opacity-60"
