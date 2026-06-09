@@ -6,4 +6,5 @@ export const wagmiConfig = createConfig({
   chains: [monadTestnet],
   connectors: [injected()],
   transports: { [monadTestnet.id]: http() },
+  ssr: true,
 });
